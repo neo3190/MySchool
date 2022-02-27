@@ -1,4 +1,4 @@
-select * from customer;
+select * from myschool_usermaster;
 
 CREATE TABLE myschool_usermaster  
 ( user_name varchar2(50) NOT NULL,  
