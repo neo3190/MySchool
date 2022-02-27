@@ -18,18 +18,20 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import MySchool.dto.UserDTO;
 import MySchool.entity.*;
 import MySchool.repository.*;
+import MySchool.service.UserService;
 
 @RestController
 @RequestMapping("/")
 public class Controller {
 	 @Autowired
-	    private UsermasterRepository usermasterRepository;
+	    private UserService userService;
 	 
 	 @RequestMapping("/users")
-	    public List < Usermaster > getAllUsers() {
-	        return usermasterRepository.findAll();
+	    public List < UserDTO > getAllUsers() {
+	        return userService.findAll();
 	    }
 
 }
