@@ -7,4 +7,6 @@ import MySchool.entity.*;
 @Repository
 public interface UsermasterRepository  extends JpaRepository<Usermaster, String> {
 
+	
+
 }

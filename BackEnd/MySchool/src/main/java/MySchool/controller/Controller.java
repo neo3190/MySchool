@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import MySchool.dto.UserDTO;
@@ -34,4 +36,18 @@ public class Controller {
 	        return userService.findAll();
 	    }
 
+	 
+	 @GetMapping("/userAuthentication")
+	 @ResponseBody
+	    public String userAuthentication(@RequestParam List<String> usercredential) {
+		 String role="NotAllowed";
+		 String userId="";
+		 String password="";
+		 
+		 userId=usercredential.get(0);
+		 password=usercredential.get(1);
+		 role= userService.userAuthentication(userId, password);
+		 				 
+	        return role;
+	    }
 }

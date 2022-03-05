@@ -1,7 +1,10 @@
 package MySchool.service;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
+import org.hibernate.mapping.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +23,15 @@ public class UserService {
 		List<Usermaster> usermaster = userrepo.findAll();
 
 		return UserUtil.getUserDto(usermaster);
+	}
+	
+	public String userAuthentication(String userId,String password) {
+
+		String role="NotAllowed";
+		Optional<Usermaster> user= userrepo.findById(userId);
+		List<Usermaster> usermaster=user.stream().collect(Collectors.toList());
+
+		return usermaster.get(0).getRole_id();
 	}
 	
 
