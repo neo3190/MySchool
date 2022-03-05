@@ -30,8 +30,11 @@ public class UserService {
 		String role="NotAllowed";
 		Optional<Usermaster> user= userrepo.findById(userId);
 		List<Usermaster> usermaster=user.stream().collect(Collectors.toList());
-
-		return usermaster.get(0).getRole_id();
+		
+        if(password.equals(usermaster.get(0).getPassword())) {
+        	role=usermaster.get(0).getRole_id();
+        }
+        return role;
 	}
 	
 
