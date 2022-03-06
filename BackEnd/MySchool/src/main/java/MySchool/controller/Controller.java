@@ -26,7 +26,8 @@ import MySchool.repository.*;
 import MySchool.service.UserService;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/api/v1")
+@CrossOrigin(origins="http://localhost:4200")
 public class Controller {
 	 @Autowired
 	    private UserService userService;
