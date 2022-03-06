@@ -10,21 +10,26 @@ import { MyschoolserviceService } from 'src/app/myschoolservice.service';
 
 export class SigninComponent implements OnInit {
   msg:string | undefined;
-  role:String | undefined;
+  role:any;
+  username: string = '';
+  password: string = '';
   constructor(private myschoolservice:MyschoolserviceService) { }
 
   ngOnInit(): void {
   }
-  clickEvent(){
+  clickEvent(Username:string, Password:string){
     this.msg='Button is Clicked';
-    return this.msg;
-    this.userAuthentication();
+    this.userAuthentication(Username,Password);
+    return this.role;
+
   }
 
-  userAuthentication()
+  userAuthentication( Username:string, Password:string)
   {
     this.myschoolservice.userAuthentication().subscribe(data=>{
-      this.role
+      this.role=data;
     });
+
+
   }
 }
