@@ -6,12 +6,12 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class MyschoolserviceService {
-baseURL="http://localhost:8080/api/v1/userAuthentication?usercredential=admin,admin";
+baseURL="http://localhost:8080/api/v1/userAuthentication?usercredential=";
 
 
   constructor(private httpClient:HttpClient) { }
 
-  userAuthentication(){
-    return this.httpClient.get(this.baseURL);
+  userAuthentication(Username:string, Password:string){
+    return this.httpClient.get(this.baseURL+Username+','+Password);
   }
 }

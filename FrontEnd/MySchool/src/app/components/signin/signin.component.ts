@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MyschoolserviceService } from 'src/app/myschoolservice.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signin',
@@ -13,22 +14,37 @@ export class SigninComponent implements OnInit {
   role:any;
   username: string = '';
   password: string = '';
-  constructor(private myschoolservice:MyschoolserviceService) { }
+  constructor(private myschoolservice:MyschoolserviceService,private router: Router) { }
 
   ngOnInit(): void {
   }
   clickEvent(Username:string, Password:string){
-    this.msg='Button is Clicked';
+
     this.userAuthentication(Username,Password);
-    return this.role;
 
   }
 
   userAuthentication( Username:string, Password:string)
   {
-    this.myschoolservice.userAuthentication().subscribe(data=>{
+    this.myschoolservice.userAuthentication(Username,Password).subscribe(data=>{
       this.role=data;
+      if(this.role=='1')
+      {
+
+        this.router.navigateByUrl('/adminuser');
+      }
+      else if(this.role=='2')
+      {
+
+        this.router.navigateByUrl('/user');
+      }
+      else{
+        this.router.navigateByUrl('/');
+        this.msg='No roles';
+      }
+
     });
+
 
 
   }
