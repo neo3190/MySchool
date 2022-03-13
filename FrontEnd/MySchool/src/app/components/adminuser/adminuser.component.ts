@@ -16,23 +16,34 @@ export class AdminuserComponent implements OnInit {
       {
       label: 'Add User',
       icon:'pi pi-fw pi-file',
-      command: (event) => { this.addUser(); }
+      id:'adduser',
+      command: (onclick)=> {this.addUser(event)}
       },
       {
       label: 'Change Password',
       icon:'pi pi-fw pi-pencil',
-
+      id:'changepass',
+      command: (onclick)=> {this.changePass(event)}
       },
       {
       label: 'Deactivate User',
       icon:'pi pi-fw pi-user',
-
+      id:'deactiveuser',
+      command: (onclick)=> {this.deactiveUser(event)}
       }
 
   ]
 }
-  addUser() {
-    alert("this is add user")
+  changePass(event: any) {
+    alert("this is change password  ");
+    throw new Error('Method not implemented.');
+  }
+  deactiveUser(event: any) {
+    alert("this is deactiveUser  ");
+    throw new Error('Method not implemented.');
+  }
+  addUser(event:any) {
+    alert("this is add user    ");
     throw new Error('Method not implemented.');
   }
   }
