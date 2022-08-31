@@ -30,11 +30,12 @@ export class SigninComponent implements OnInit {
       this.role=data;
       if(this.role=='1')
       {
-
+sessionStorage.setItem("currRole","adminuser")
         this.router.navigateByUrl('/adminuser');
       }
       else if(this.role=='2')
       {
+        sessionStorage.setItem("currRole","user")
 
         this.router.navigateByUrl('/user');
       }
